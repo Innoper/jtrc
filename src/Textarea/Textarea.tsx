@@ -6,6 +6,10 @@ const defaultColor = {
     bgColor: "#ececec61",
     boxShadow: "#c5c5c5",
   },
+  focus: {
+    bgColor: "#ffffff",
+    boxShadow: "#1677ff",
+  },
 };
 
 const StyledTextarea = styled.textarea<HTMLTextAreaElement>`
@@ -17,11 +21,11 @@ const StyledTextarea = styled.textarea<HTMLTextAreaElement>`
   border: none;
   outline: none;
   background-color: var(
-    --jtrc-textarea-bg-color,
+    --jtrc-textarea-default-bg-color,
     ${defaultColor.default.bgColor}
   );
   box-shadow: inset 0 0 0 0.0625rem
-    var(--jtrc-textarea-border-color, ${defaultColor.default.boxShadow});
+    var(--jtrc-textarea-default-border-color, ${defaultColor.default.boxShadow});
   border-radius: 0.375rem;
 
   /* Custom Scrollbar */
@@ -43,6 +47,16 @@ const StyledTextarea = styled.textarea<HTMLTextAreaElement>`
 
   &::-webkit-scrollbar-corner {
     background: transparent;
+  }
+
+  /* focus */
+  &:focus {
+    background-color: var(
+      --jtrc-textarea-focus-bg-color,
+      ${defaultColor.focus.bgColor}
+    );
+    box-shadow: inset 0 0 0 0.0625rem
+      var(--jtrc-textarea-focus-border-color, ${defaultColor.focus.boxShadow});
   }
 `;
 

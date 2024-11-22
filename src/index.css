@@ -12,8 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --jtrc-textarea-default-bg-color: ;
+  /* --jtrc-textarea-default-bg-color: ;
   --jtrc-textarea-default-border-color: ;
+  --jtrc-textarea-focus-bg-color: ;
+  --jtrc-textarea-focus-border-color: ; */
 }
 
 a {

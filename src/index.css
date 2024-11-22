@@ -11,6 +11,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --jtrc-textarea-default-bg-color: ;
+  --jtrc-textarea-default-border-color: ;
 }
 
 a {

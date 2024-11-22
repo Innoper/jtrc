@@ -1,5 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  isError?: boolean;
+}
+
+const shake = keyframes`
+  0% { transform: translateX(-0.375rem); }
+  25% { transform: translateX(0.375rem); }
+  50% { transform: translateX(-0.375rem); }
+  75% { transform: translateX(0.375rem); }
+  100% { transform: translateX(0); }
+`;
 
 const defaultColor = {
   default: {
@@ -10,9 +23,13 @@ const defaultColor = {
     bgColor: "#ffffff",
     boxShadow: "#1677ff",
   },
+  error: {
+    bgColor: "#f44e4e44",
+    boxShadow: "#f44e4e",
+  },
 };
 
-const StyledTextarea = styled.textarea<HTMLTextAreaElement>`
+const StyledTextarea = styled.textarea<TextareaProps>`
   width: 100%;
   padding: 0.3rem 0.6rem;
   font-size: 0.6rem;
@@ -58,10 +75,23 @@ const StyledTextarea = styled.textarea<HTMLTextAreaElement>`
     box-shadow: inset 0 0 0 0.0625rem
       var(--jtrc-textarea-focus-border-color, ${defaultColor.focus.boxShadow});
   }
+
+  /* error */
+  ${(props) =>
+    props.isError &&
+    css`
+      box-shadow: inset 0 0 0 0.0625rem
+        var(--jtrc-textarea-error-border-color, ${defaultColor.error.boxShadow});
+      background-color: var(
+        --jtrc-textarea-error-bg-color,
+        ${defaultColor.error.bgColor}
+      );
+      animation: ${shake} 0.3s ease;
+    `}
 `;
 
-const Textarea: React.FC<HTMLTextAreaElement> = ({ ...props }) => {
-  return <StyledTextarea {...props} />;
+const Textarea: React.FC<TextareaProps> = ({ isError, ...props }) => {
+  return <StyledTextarea isError={isError} {...props} />;
 };
 
 export default Textarea;

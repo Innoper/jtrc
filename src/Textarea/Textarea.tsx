@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  autoSize?: boolean;
   isError?: boolean;
 }
 
@@ -90,8 +91,29 @@ const StyledTextarea = styled.textarea<TextareaProps>`
     `}
 `;
 
-const Textarea: React.FC<TextareaProps> = ({ isError, ...props }) => {
-  return <StyledTextarea isError={isError} {...props} />;
+const Textarea: React.FC<TextareaProps> = ({ autoSize, ...props }) => {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // 텍스트 입력 시 높이 자동 조절
+  const handleInput = () => {
+    if (textareaRef.current && autoSize) {
+      // 높이를 초기화
+      textareaRef.current.style.height = "auto";
+
+      // HTML의 기본 폰트 크기를 가져옴
+      const baseFontSize = parseFloat(
+        getComputedStyle(document.documentElement).fontSize
+      );
+
+      // scrollHeight를 rem 단위로 변환
+      const scrollHeightRem = textareaRef.current.scrollHeight / baseFontSize;
+
+      // 높이를 rem 단위로 설정
+      textareaRef.current.style.height = `${scrollHeightRem}rem`;
+    }
+  };
+
+  return <StyledTextarea ref={textareaRef} onInput={handleInput} {...props} />;
 };
 
 export default Textarea;

@@ -75,7 +75,10 @@ const StyledTextarea = styled.textarea<TextareaProps>`
       ${defaultColor.focus.bgColor}
     );
     box-shadow: inset 0 0 0 0.125rem
-      var(--jtrc-textarea-focus-border-color, ${defaultColor.focus.boxShadow});
+      var(
+        --jtrc-textarea-focus-border-color,
+        var(--jtrc-thema, ${defaultColor.focus.boxShadow})
+      );
   }
 
   /* error */

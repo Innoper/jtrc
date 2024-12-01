@@ -95,6 +95,38 @@ const StyledTextarea = styled.textarea<TextareaProps>`
     `}
 `;
 
+/**
+ * A jtrc textarea component.
+ *
+ * - Automatically adjusts its height to fit the content if 'autoSize' is enabled.
+ * - Displays error styles and animations when 'isError' is true.
+ * - Supports all standard HTML textarea attributes.
+ *
+ * @component
+ * @example
+ * // Example usage
+ * import Textarea from './Textarea';
+ *
+ * const App = () => {
+ *   const [isError, setIsError] = useState(false);
+ *
+ *   return (
+ *     <div>
+ *       <Textarea
+ *         autoSize
+ *         isError={isError}
+ *         placeholder="Type something..."
+ *       />
+ *       <button onClick={() => setIsError(!isError)}>Toggle Error</button>
+ *     </div>
+ *   );
+ * };
+ *
+ * @param {boolean} isError textarea error state
+ * @param {boolean} autoSize textarea autosize
+ * @param {React.TextareaHTMLAttributes<HTMLTextAreaElement>} props - HTML textarea attributes.
+ * @returns {JSX.Element} textarea component.
+ */
 const Textarea: React.FC<TextareaProps> = ({ autoSize, ...props }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 

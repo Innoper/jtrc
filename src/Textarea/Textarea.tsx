@@ -32,9 +32,9 @@ const defaultColor = {
 
 const StyledTextarea = styled.textarea<TextareaProps>`
   width: 100%;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.6rem;
-  line-height: 0.8rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   resize: none;
   border: none;
   outline: none;
@@ -42,25 +42,26 @@ const StyledTextarea = styled.textarea<TextareaProps>`
     --jtrc-textarea-default-bg-color,
     ${defaultColor.default.bgColor}
   );
-  box-shadow: inset 0 0 0 0.0625rem
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 0.125rem
     var(--jtrc-textarea-default-border-color, ${defaultColor.default.boxShadow});
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
 
   /* Custom Scrollbar */
   &::-webkit-scrollbar {
-    width: 0.625rem;
+    width: 0.75rem;
   }
 
   &::-webkit-scrollbar-track {
-    margin: 0.125rem 0;
+    margin: 0.25rem 0;
     background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #99999960;
     background-clip: padding-box;
-    border: 0.1875rem solid transparent;
-    border-radius: 0.5rem;
+    border: 0.25rem solid transparent;
+    border-radius: 0.75rem;
   }
 
   &::-webkit-scrollbar-corner {
@@ -73,7 +74,7 @@ const StyledTextarea = styled.textarea<TextareaProps>`
       --jtrc-textarea-focus-bg-color,
       ${defaultColor.focus.bgColor}
     );
-    box-shadow: inset 0 0 0 0.0625rem
+    box-shadow: inset 0 0 0 0.125rem
       var(--jtrc-textarea-focus-border-color, ${defaultColor.focus.boxShadow});
   }
 
@@ -81,7 +82,7 @@ const StyledTextarea = styled.textarea<TextareaProps>`
   ${(props) =>
     props.isError &&
     css`
-      box-shadow: inset 0 0 0 0.0625rem
+      box-shadow: inset 0 0 0 0.125rem
         var(--jtrc-textarea-error-border-color, ${defaultColor.error.boxShadow});
       background-color: var(
         --jtrc-textarea-error-bg-color,

@@ -70,6 +70,7 @@ const StyledButton = styled.button<ButtonProps>`
 
   &:disabled {
     opacity: 0.7;
+    cursor: not-allowed;
   }
 `;
 
@@ -85,7 +86,7 @@ const LoadingContainer = styled.div`
 const Dot = styled.div<{ delay: string }>`
   width: 8px;
   height: 8px;
-  background-color: #777777; /* 원하는 색상 */
+  background-color: #777777;
   border-radius: 50%;
   animation: ${bounce} 1s infinite ease-in-out;
   animation-delay: ${(props) => props.delay};

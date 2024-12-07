@@ -92,6 +92,34 @@ const Dot = styled.div<{ delay: string }>`
   animation-delay: ${(props) => props.delay};
 `;
 
+/**
+ * A jtrc button component.
+ *
+ * - Supports three variants: `'primary'`, `'secondary'`, and `'default'` to style the button.
+ * - Accepts a custom `height` to adjust the button's size.
+ * - Displays a loading animation when `isLoading` is set to `true`.
+ * - Supports all standard HTML button attributes.
+ *
+ * @component
+ * @example
+ * // Example usage
+ * import Button from './Button';
+ *
+ * const App = () => {
+ *   return (
+ *      <Button variant="primary" height="50px" isLoading={false}>
+ *         Click Me
+ *       </Button>
+ *   );
+ * };
+ *
+ * @param {React.ReactNode} children - The content to be displayed inside the button. Typically a string or JSX element.
+ * @param {boolean} isLoading - If `true`, the button shows a loading animation and disables interaction.
+ * @param {string | number} height - The height of the button, e.g., `'50px'` or `3rem`. Defaults to `'3rem'`.
+ * @param {'primary' | 'secondary' | 'default'} variant The style variant of the button. `'primary'`, `'secondary'`, and `'default'` to style the button`.
+ * @param {React.ButtonHTMLAttributes<HTMLButtonElement>} props - Additional attributes passed to the button element, such as `onClick`, `disabled`, etc.
+ * @returns {JSX.Element} button component.
+ */
 const Button: React.FC<ButtonProps> = ({ children, isLoading, ...props }) => {
   return (
     <StyledButton

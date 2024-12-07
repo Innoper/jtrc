@@ -69,7 +69,7 @@ const StyledButton = styled.button<ButtonProps>`
         : ` ${defaultColor.default.borderColor}`};
 
   &:disabled {
-    opacity: 0.7;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 `;
